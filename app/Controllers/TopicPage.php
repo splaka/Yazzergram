@@ -16,7 +16,7 @@ class TopicPage extends BaseController
         $topic = $topicModel->getUserTopic($id);
 
         if (!$topic) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("NEGOR");
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Il topic non esiste.");
         }
 
         // Fetch the posts for the topic

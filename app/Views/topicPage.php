@@ -3,7 +3,7 @@
 
 <div class="container my-5">
     <h1 class="text-center mb-4"><?= esc($topic['titolo']) ?></h1>
-    <p class="text-muted text-center">Postato da: <?= esc($topic['username']) ?></p>
+    <p class="text-muted text-center">Autore: <?= esc($topic['username']) ?></p>
     <hr>
 
     <h3 class="mb-4">Posts:</h3>
@@ -11,13 +11,15 @@
         <div class="list-group">
             <?php foreach ($posts as $post): ?>
                 <div class="list-group-item mb-3 shadow-sm">
-                    <p class="mb-1"><?= esc($post['testo']) ?></p>
-                    <small class="text-muted">Posted by: <?= esc($post['username']) ?></small>
+                    <p class="fw-bold fs-5 mb-1"><?= esc($post['username']) ?></p>
+                    <small><?= esc($post['data_ora'] ) ?></small>
+                    <hr class="my-2">
+                    <p class="mb-0"><?= esc($post['testo']) ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
     <?php else: ?>
-        <p class="text-center text-muted">No posts available for this topic.</p>
+        <p class="text-center text-muted">Non ci sono post per questo topic.</p>
     <?php endif; ?>
 </div>
 
