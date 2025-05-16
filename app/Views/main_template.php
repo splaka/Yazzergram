@@ -26,7 +26,7 @@
                         <a class="nav-link" href=<?= base_url("/signup") ?>>Iscriviti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Accedi</a>
+                        <a class="nav-link" href=<?= base_url("/login") ?>>Accedi</a>
                     </li>
                 </ul>
             </div>

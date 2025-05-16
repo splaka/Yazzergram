@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white text-center">
-                    <h4>Crea il tuo account</h4>
+                    <h4>Accedi</h4>
                 </div>
                 <div class="card-body">
                     <?php if (session()->getFlashdata('errors')): ?>
@@ -19,25 +19,21 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action=<?= base_url("/signup") ?> method="post">
+                    <form action=<?= base_url("/login") ?> method="post">
                         <?= csrf_field() ?>
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" value="<?= old('username') ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="<?= old('email') ?>" required>
+                            <label for="login" class="form-label">Username o Email</label>
+                            <input type="text" class="form-control" id="login" name="login" value="<?= old('login') ?>" placeholder="Inserisci username o email" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Iscriviti</button>
+                        <button type="submit" class="btn btn-primary w-100">Accedi</button>
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <small>Hai già un account?  <a href=<?= base_url("/login") ?>> Log In</a></small>
+                    <small>Non hai un account? <a href=<?= base_url("/signup") ?>>Registrati</a></small>
                 </div>
             </div>
         </div>

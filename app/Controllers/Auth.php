@@ -8,33 +8,33 @@ class Auth extends BaseController
 {
     public function signupForm()
     {
-        // Load the sign-up form view
+        // Carica la pagina di registrazione
         return view('signup');
     }
 
-    public function index()
+    public function loginForm()
     {
-        // Load the login form view
-        return view('signup');
+        // Carica la pagina di login
+        return view('login');
     }
 
-    public function processSignup()
+    public function register()
     {
         $validation = \Config\Services::validation();
 
-        // Validate the form input
+        // Validazione Input Form
         $validation->setRules([
-            'username' => 'required|min_length[3]|is_unique[users.username]',
-            'email'    => 'required|valid_email|is_unique[users.email]',
+            'username' => 'required|min_length[3]|is_unique[utenti.username]',
+            'email'    => 'required|valid_email|is_unique[utenti.email]',
             'password' => 'required|min_length[6]',
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
-            // Return to the form with validation errors
+            // Torna al form di registrazione con i campi con errori
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
-        // Save the user to the database
+        // Salva i dati dell'utente nel database
         $userModel = new UserModel();
         $userModel->save([
             'username' => $this->request->getPost('username'),
@@ -42,7 +42,7 @@ class Auth extends BaseController
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
         ]);
 
-        // Redirect to a success page or login page
-        return redirect()->to('/login')->with('success', 'Account created successfully. Please log in.');
+        // Redirect alla pagina di login con un messaggio di successo
+        return redirect()->to('/')->with('success', 'Account creato con successo, accedi.');
     }
 }
