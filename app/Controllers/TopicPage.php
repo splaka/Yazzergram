@@ -25,7 +25,8 @@ class TopicPage extends BaseController
         // Pass data to the view
         return view('topicPage', [
             'topic' => $topic,
-            'posts' => $posts
+            'posts' => $posts,
+            'pager' => $postModel->pager
         ]);
     }
 }

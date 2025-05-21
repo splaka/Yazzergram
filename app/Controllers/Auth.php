@@ -48,6 +48,10 @@ class Auth extends BaseController
             // Redirect alla home
             return redirect()->to('/')->with('success', 'Accesso effettuato con successo.');
         }
+        else {
+            // Se l'email o la password non sono corrette
+            return redirect()->back()->withInput()->with('errors', ['email' => 'Email o password errati.']);
+        }
     }
 
     public function register()

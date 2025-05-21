@@ -12,11 +12,14 @@
             <?php foreach ($posts as $post): ?>
                 <div class="list-group-item mb-3 shadow-sm">
                     <p class="fw-bold fs-5 mb-1"><?= esc($post['username']) ?></p>
-                    <small><?= esc($post['data_ora'] ) ?></small>
+                    <small><?= esc($post['data_ora']) ?></small>
                     <hr class="my-2">
                     <p class="mb-0"><?= esc($post['testo']) ?></p>
                 </div>
             <?php endforeach; ?>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <?= $pager->links('default', 'bootstrap_simple') ?>
         </div>
     <?php else: ?>
         <p class="text-center text-muted">Non ci sono post per questo topic.</p>
@@ -24,4 +27,3 @@
 </div>
 
 <?= $this->endSection() ?>
-
