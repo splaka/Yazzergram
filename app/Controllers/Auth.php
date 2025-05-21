@@ -45,11 +45,8 @@ class Auth extends BaseController
                 'email'    => $user['email'],
                 'logged_in'=> true,
             ]);
-            // Redirect alla home o dashboard
-            return redirect()->to('/');
-        } else {
-            // Credenziali non valide
-            return redirect()->back()->withInput()->with('error', 'Email o password non corretti.');
+            // Redirect alla home
+            return redirect()->to('/')->with('success', 'Accesso effettuato con successo.');
         }
     }
 
