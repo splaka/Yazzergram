@@ -22,12 +22,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href=<?= base_url() ?>>Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=<?= base_url("/signup") ?>>Iscriviti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=<?= base_url("/login") ?>>Accedi</a>
-                    </li>
+                    <?php if (session()->get('logged_in')): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href=<?= base_url("/profile") ?>>Profilo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=<?= base_url("/logout") ?>>Logout</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href=<?= base_url("/signup") ?>>Iscriviti</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=<?= base_url("/login") ?>>Accedi</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>

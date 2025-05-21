@@ -22,4 +22,12 @@
     </div>
 </div>
 
+<div class="position-fixed bottom-0 text-bg-danger end-0 p-3" style="z-index: 9999">
+    <div id="testToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+            This is a test toast message!
+        </div>
+    </div>
+</div>
+
 <?= $this->endSection() ?>

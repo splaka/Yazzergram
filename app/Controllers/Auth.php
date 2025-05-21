@@ -18,6 +18,41 @@ class Auth extends BaseController
         return view('login');
     }
 
+    public function login()
+    {
+        $validation = \Config\Services::validation();
+
+        // Validazione Input Form
+        $validation->setRules([
+            'email'    => 'required|valid_email',
+            'password' => 'required',
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            // Torna al form di login con i campi con errori
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
+
+        $userModel = new UserModel();
+        $user = $userModel->where('email', $this->request->getPost('email'))->first();
+
+        if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
+            // Imposta la sessione utente
+            $session = session();
+            $session->set([
+                'user_id'  => $user['id_user'],
+                'username' => $user['username'],
+                'email'    => $user['email'],
+                'logged_in'=> true,
+            ]);
+            // Redirect alla home o dashboard
+            return redirect()->to('/');
+        } else {
+            // Credenziali non valide
+            return redirect()->back()->withInput()->with('error', 'Email o password non corretti.');
+        }
+    }
+
     public function register()
     {
         $validation = \Config\Services::validation();
@@ -44,5 +79,15 @@ class Auth extends BaseController
 
         // Redirect alla pagina di login con un messaggio di successo
         return redirect()->to('/')->with('success', 'Account creato con successo, accedi.');
+    }
+
+    public function logout()
+    {
+        // Distruggi la sessione
+        $session = session();
+        $session->destroy();
+
+        // Redirect alla home
+        return redirect()->to('/');
     }
 }
