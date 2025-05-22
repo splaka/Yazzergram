@@ -7,6 +7,9 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/topic/(:num)', 'TopicPage::index/$1');
+$routes->post('/topic/(:num)', 'TopicPage::newPost/$1');
+$routes->get('/topic/creaTopic', 'Home::newTopicForm');
+$routes->post('/topic/creaTopic', 'Home::newTopic');
 $routes->get('/signup', 'Auth::signupForm');
 $routes->get('/login', 'Auth::loginForm');
 $routes->get('/logout', 'Auth::logout');

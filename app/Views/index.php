@@ -8,10 +8,11 @@
             <div class="col-md-6 col-lg-4">
                 <div class="d-flex justify-content-center align-items-center h-100">
                     <a href="<?= site_url('topic/creaTopic') ?>" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"
-                       style="width: 64px; height: 64px; font-size: 2rem;">
+                        style="width: 64px; height: 64px; font-size: 2rem;">
                         <span class="visually-hidden">Crea un nuovo topic</span>
+                        <!-- // SVG per il simbolo del "+", lo ha trovato l'IA non so da dove viene -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                         </svg>
                     </a>
                 </div>
@@ -32,6 +33,9 @@
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <?= $pager->links('default', 'bootstrap_simple') ?>
     </div>
 </div>
 

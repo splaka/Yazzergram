@@ -3,10 +3,10 @@
 
 <div class="container my-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white text-center">
-                    <h4>Accedi</h4>
+                    <h4>Crea un nuovo Topic</h4>
                 </div>
                 <div class="card-body">
                     <?php if (session()->getFlashdata('errors')): ?>
@@ -19,20 +19,13 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action=<?= base_url("/login") ?> method="post">
+                    <form action="<?= base_url('/topic/creaTopic') ?>" method="post">
                         <div class="mb-3">
-                            <label for="login" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="login" name="email" value="<?= old('email') ?>" placeholder="Email" required>
+                            <label for="titolo" class="form-label">Titolo del Topic</label>
+                            <input type="text" class="form-control" id="titolo" name="titolo" value="<?= old('titolo') ?>" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Accedi</button>
+                        <button type="submit" class="btn btn-primary w-100">Crea Topic</button>
                     </form>
-                </div>
-                <div class="card-footer text-center">
-                    <small>Non hai un account? <a href=<?= base_url("/signup") ?>>Registrati</a></small>
                 </div>
             </div>
         </div>

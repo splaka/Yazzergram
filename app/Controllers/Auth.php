@@ -34,6 +34,7 @@ class Auth extends BaseController
         }
 
         $userModel = new UserModel();
+        //Fetch utente dal database
         $user = $userModel->where('email', $this->request->getPost('email'))->first();
 
         if ($user && password_verify($this->request->getPost('password'), $user['password'])) {

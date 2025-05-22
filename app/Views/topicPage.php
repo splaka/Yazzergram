@@ -18,11 +18,54 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="d-flex justify-content-center mt-4">
-            <?= $pager->links('default', 'bootstrap_simple') ?>
-        </div>
     <?php else: ?>
         <p class="text-center text-muted">Non ci sono post per questo topic.</p>
+    <?php endif; ?>
+    <div class="d-flex justify-content-center mt-4">
+        <?= $pager->links('default', 'bootstrap_simple') ?>
+    </div>
+    <?php if (session()->get('logged_in')): ?>
+        <div>
+            <?php if (session()->getFlashdata('errors')): ?>
+                <div class="alert alert-danger">
+                    <ul>
+                        <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                            <li><?= esc($error) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+            <form action="<?= current_url() ?>" method="POST" class="mt-4">
+                <div class="mb-3">
+                    <label for="testo" class="form-label">Scrivi un nuovo post:</label>
+                    <textarea class="form-control" id="testo" name="testo" rows="3" required placeholder="Inserisci il tuo post..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Invia</button>
+            </form>
+        </div>
+    <?php endif; ?>
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+            <div class="toast align-items-center text-bg-primary border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    <?php elseif (session()->getFlashdata('error')): ?>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+            <div class="toast align-items-center text-bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?= session()->getFlashdata('error') ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
     <?php endif; ?>
 </div>
 

@@ -1,5 +1,7 @@
 <?php
 
+//Template per la paginazione dei topic, lo ha fattp l'IA non ho idea di come funzioni
+
 use CodeIgniter\Pager\PagerRenderer;
 
 /**

@@ -10,19 +10,26 @@ class TopicModel extends Model
     protected $primaryKey = 'id_topic';
     protected $allowedFields = ['titolo', 'id_user'];
 
-    public function getTopics()
+    public function getTopics($perPage = 10)
     {
-        $this->select('topic.id_topic, topic.titolo, utenti.username')
+        return $this->select('topic.id_topic, topic.titolo, utenti.username')
             ->join('utenti', 'topic.id_user = utenti.id_user')
-            ->orderBy('topic.id_topic', 'DESC');
-        return $this->findAll();
+            ->paginate($perPage);
     }
 
     public function getUserTopic($id_topic)
     {
-        $this->select('topic.id_topic, topic.titolo, utenti.username')
+        return $this->select('topic.id_topic, topic.titolo, utenti.username')
             ->join('utenti', 'topic.id_user = utenti.id_user')
-            ->where('topic.id_topic', $id_topic);
-        return $this->first();
+            ->where('topic.id_topic', $id_topic)
+            ->first();
+    }
+
+    public function newTopic($titolo)
+    {
+        return $this->insert([
+            'titolo' => $titolo,
+            'id_user' => session()->get('user_id')
+        ]);
     }
 }
