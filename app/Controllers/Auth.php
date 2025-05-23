@@ -92,4 +92,26 @@ class Auth extends BaseController
         // Redirect alla home
         return redirect()->to('/');
     }
+
+    public function profile()
+    {
+        $userModel = new UserModel();
+        $user = $userModel->find(session()->get('user_id'));
+
+        return view('profiloUtente', [
+            'user' => $user,
+        ]);
+    }
+
+    public function deleteAccount()
+    {
+        $userModel = new UserModel();
+        $session = session();
+
+        // Elimina l'account
+        $userModel->delete($session->get('user_id'));
+        $session->destroy();
+
+        return redirect()->to('/')->with('success', 'Account eliminato con successo.');
+    }
 }

@@ -19,9 +19,9 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action="<?= base_url('/topic/creaTopic') ?>" method="post">
+                    <form action="<?= site_url('/topic/creaTopic') ?>" method="post">
                         <div class="mb-3">
-                            <label for="titolo" class="form-label">Titolo del Topic</label>
+                            <label for="titolo" class="form-label">Titolo del Topic:</label>
                             <input type="text" class="form-control" id="titolo" name="titolo" value="<?= old('titolo') ?>" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Crea Topic</button>

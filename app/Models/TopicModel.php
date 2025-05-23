@@ -14,6 +14,8 @@ class TopicModel extends Model
     {
         return $this->select('topic.id_topic, topic.titolo, utenti.username')
             ->join('utenti', 'topic.id_user = utenti.id_user')
+            ->orderBy('topic.id_topic', 'DESC')
+            //Magica funzione di CodeIgniter per la paginazione
             ->paginate($perPage);
     }
 

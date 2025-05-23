@@ -19,7 +19,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <form action=<?= base_url("/login") ?> method="post">
+                    <form action=<?= site_url("/login") ?> method="post">
                         <div class="mb-3">
                             <label for="login" class="form-label">Email</label>
                             <input type="text" class="form-control" id="login" name="email" value="<?= old('email') ?>" placeholder="Email" required>
@@ -32,7 +32,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <small>Non hai un account? <a href=<?= base_url("/signup") ?>>Registrati</a></small>
+                    <small>Non hai un account? <a href=<?= site_url("/signup") ?>>Registrati</a></small>
                 </div>
             </div>
         </div>
