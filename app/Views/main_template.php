@@ -8,11 +8,11 @@
     <title>Yazzergram</title>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src=<?= base_url("/img/logo.svg") ?> alt="Bootstrap" style="height: 10vh;">
+                <img src=<?= base_url("/img/logo.svg") ?> alt="Bootstrap" style="height: 7.5vh;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -41,10 +41,14 @@
             </div>
         </div>
     </nav>
-    <main>
+    <main class="flex-grow-1">
         <?= $this->renderSection('content') ?>
     </main>
-
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <div class="container">
+            <small>&copy; <?= date('Y') ?> Yazzergram. Tutti i diritti riservati.</small>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
 

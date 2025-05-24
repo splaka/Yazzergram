@@ -3,14 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\TopicModel;
-use App\Models\TopicPageModel;
+use App\Models\PostModel;
 
 class TopicPage extends BaseController
 {
     public function index($id): string
     {
         $topicModel = new TopicModel();
-        $postModel = new TopicPageModel();
+        $postModel = new PostModel();
 
         // Fetch dei dettagli del topic (titolo e autore)
         $topic = $topicModel->getUserTopic($id);
@@ -31,7 +31,7 @@ class TopicPage extends BaseController
 
     public function newPost($id)
     {
-        $postModel = new TopicPageModel();
+        $postModel = new PostModel();
 
         // Validazione del testo del post
         $validation = \Config\Services::validation();
@@ -47,5 +47,20 @@ class TopicPage extends BaseController
         $postModel->newPost($id, $this->request->getPost('testo'));
 
         return redirect()->to('/topic/' . $id)->with('success', 'Post creato con successo.');
+    }
+
+    public function deletePost($id_post)
+    {
+        $postModel = new PostModel();
+
+        // Verifica se il post esiste
+        if (!$postModel->find($id_post)) {
+            return redirect()->back()->with('error', 'Il post non esiste.');
+        }
+
+        // Elimina il post
+        $postModel->delete($id_post);
+
+        return redirect()->back()->with('success', 'Post eliminato con successo.');
     }
 }

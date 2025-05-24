@@ -4,9 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-//Questo model forse era meglio chiamarlo PostModel, ma non mi andava di cambiare il nome a tutti i file
-
-class TopicPageModel extends Model
+class PostModel extends Model
 {
     protected $table = 'post';
     protected $primaryKey = 'id_post';
@@ -14,9 +12,10 @@ class TopicPageModel extends Model
 
     public function getTopicPosts($id_topic, $perPage = 10)
     {
-        return $this->select('post.testo, utenti.username, post.data_ora')
+        return $this->select('post.testo, utenti.username, post.data_ora, post.id_post')
             ->join('utenti', 'post.id_user = utenti.id_user')
             ->where('post.id_topic', $id_topic)
+            ->orderby('post.id_post', 'ASC')
             //Magica funzione di CodeIgniter per la paginazione
             ->paginate($perPage);
     }

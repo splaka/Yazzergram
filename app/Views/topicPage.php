@@ -10,7 +10,12 @@
     <?php if (!empty($posts)): ?>
         <div class="list-group">
             <?php foreach ($posts as $post): ?>
-                <div class="list-group-item mb-3 shadow-sm">
+                <div class="list-group-item mb-3 shadow-sm position-relative">
+                    <?php if (session()->get('username') === $post['username']): ?>
+                        <form action="<?= site_url('post/delete/' . $post['id_post']) ?>" method="POST" class="position-absolute top-0 end-0 m-2">
+                            <button type="submit" class="btn btn-sm btn-close" aria-label="Elimina" onclick="return confirm('Sei sicuro di voler eliminare questo post?')"></button>
+                        </form>
+                    <?php endif; ?>
                     <p class="fw-bold fs-5 mb-1"><?= esc($post['username']) ?></p>
                     <small><?= esc($post['data_ora']) ?></small>
                     <hr class="my-2">

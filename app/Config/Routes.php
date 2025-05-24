@@ -17,3 +17,4 @@ $routes->post('/login', 'Auth::login');
 $routes->post('/signup', 'Auth::register');
 $routes->get('/profilo', 'Auth::profile');
 $routes->get('/eliminaProfilo', 'Auth::deleteAccount');
+$routes->post('/post/delete/(:num)', 'TopicPage::deletePost/$1');

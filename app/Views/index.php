@@ -20,7 +20,13 @@
         <?php endif; ?>
         <?php foreach ($topics as $topic): ?>
             <div class="col-md-6 col-lg-4">
-                <div class="card shadow-sm h-100">
+                <div class="card shadow-sm h-100 position-relative">
+                    <?php if (session()->get('username') === $topic['username']): ?>
+                        <form action="<?= site_url('topic/delete/' . $topic['id_topic']) ?>" method="POST" class="position-absolute top-0 end-0 m-2">
+                            <?= csrf_field() ?>
+                            <button type="submit" class="btn btn-sm btn-close" aria-label="Elimina" onclick="return confirm('Sei sicuro di voler eliminare questo topic?')"></button>
+                        </form>
+                    <?php endif; ?>
                     <div class="card-body">
                         <a href="<?= site_url('topic/' . $topic['id_topic']) ?>" class="text-decoration-none text-dark">
                             <h5 class="card-title"><?= esc($topic['titolo']) ?></h5>
