@@ -16,7 +16,7 @@
                     <hr>
                     <?php if (session()->get('user_id') == $user['id_user']): ?>
                         <h6>Gestione Account:</h6>
-                        <a href="<?= site_url('/eliminaProfilo') ?>" class="btn btn-outline-danger btn-sm w-100">Elimina Profilo</a>
+                        <a href="<?= site_url('/eliminaProfilo') ?>" class="btn btn-outline-danger btn-sm w-100" onclick="return confirm('Sei sicuro di voler eliminare il tuo profilo?')">Elimina Profilo</a>
                     <?php endif; ?>
                 </div>
             </div>

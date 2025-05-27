@@ -34,4 +34,9 @@ class TopicModel extends Model
             'id_user' => session()->get('user_id')
         ]);
     }
+
+    public function deleteTopic($id_topic)
+    {
+        return $this->delete($id_topic);
+    }
 }

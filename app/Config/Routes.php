@@ -18,3 +18,4 @@ $routes->post('/signup', 'Auth::register');
 $routes->get('/profilo', 'Auth::profile');
 $routes->get('/eliminaProfilo', 'Auth::deleteAccount');
 $routes->post('/post/delete/(:num)', 'TopicPage::deletePost/$1');
+$routes->post('/topic/delete/(:num)', 'Home::deleteTopic/$1');

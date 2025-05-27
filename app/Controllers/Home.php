@@ -36,7 +36,15 @@ class Home extends BaseController
         // Creazione del nuovo topic
         $model->newTopic($this->request->getPost('titolo'));
 
-        return redirect()->to('/')->with('success', 'Topic creato con successo');
+        return redirect()->to('/')->with('success', 'Topic creato con successo.');
+    }
+
+    public function deleteTopic(int $id)
+    {
+        $model = new TopicModel();
+        $model->deleteTopic($id);
+
+        return redirect()->to('/')->with('success', 'Topic eliminato con successo.');
     }
 
     public function newTopicForm()
