@@ -44,6 +44,31 @@
     <main class="flex-grow-1">
         <?= $this->renderSection('content') ?>
     </main>
+
+    <?php if (session()->getFlashdata('success')): ?>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+            <div class="toast align-items-center text-bg-primary border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    <?php elseif (session()->getFlashdata('error')): ?>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+            <div class="toast align-items-center text-bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?= session()->getFlashdata('error') ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
     <footer class="bg-dark text-light text-center py-3 mt-5">
         <div class="container">
             <small>&copy; <?= date('Y') ?> Yazzergram. Tutti i diritti riservati.</small>

@@ -34,6 +34,8 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        // Filtro per il login
+        'logincheck'    => \App\Filters\LoginCheck::class,
     ];
 
     /**
